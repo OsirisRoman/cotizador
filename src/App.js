@@ -1,11 +1,12 @@
-import { Fragment } from 'react';
 import Header from './Componentes/Header/Header';
+
+import { Contenedor, ContenedorFormulario } from './App.styles';
 
 function App() {
   return (
-    <Fragment>
+    <Contenedor>
       <Header titulo='Cotizador de Seguros' />
-    </Fragment>
+    </Contenedor>
   );
 }
 
