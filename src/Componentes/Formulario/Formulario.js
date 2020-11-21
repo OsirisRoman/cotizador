@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Campo, Label, Select, InputRadio } from './Formulario.styles';
+import { Campo, Label, Select, InputRadio, Boton } from './Formulario.styles';
 
 const Formulario = () => {
   return (
@@ -35,7 +35,7 @@ const Formulario = () => {
         <InputRadio type='radio' name='plan' value='basico' /> Básico
         <InputRadio type='radio' name='plan' value='completo' /> Completo
       </Campo>
-      <button type='button'>Cotizar</button>
+      <Boton type='button'>Cotizar</Boton>
     </form>
   );
 };
