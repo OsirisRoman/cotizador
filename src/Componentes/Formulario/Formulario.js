@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Campo, Label, Select, InputRadio, Boton } from './Formulario.styles';
 
 const Formulario = () => {
+  //Estado del componente
+  const [variablesCotizacion, setVariablesCotizacion] = useState({
+    marca: '',
+    año: '',
+    plan: '',
+  });
+
+  //extraer los valores del state
+  const { marca, año, plan } = variablesCotizacion;
+
+  //Leer los datos ingresados por el usuario y guardarlos en el state
+  const guardarDatos = (e) => {
+    setVariablesCotizacion({
+      ...variablesCotizacion,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <form>
       <Campo>
         <Label>Marca</Label>
-        <Select>
+        <Select name='marca' value={marca} onChange={guardarDatos}>
           <option value=''>-- Seleccione --</option>
           <option value='americano'>Americano</option>
           <option value='europeo'>Europeo</option>
@@ -16,7 +34,7 @@ const Formulario = () => {
       </Campo>
       <Campo>
         <Label>Año</Label>
-        <Select>
+        <Select name='año' value={año} onChange={guardarDatos}>
           <option value=''>-- Seleccione --</option>
           <option value='2021'>2021</option>
           <option value='2020'>2020</option>
@@ -32,8 +50,22 @@ const Formulario = () => {
       </Campo>
       <Campo>
         <Label>Plan</Label>
-        <InputRadio type='radio' name='plan' value='basico' /> Básico
-        <InputRadio type='radio' name='plan' value='completo' /> Completo
+        <InputRadio
+          type='radio'
+          name='plan'
+          value='basico'
+          checked={plan === 'basico'}
+          onChange={guardarDatos}
+        />
+        Básico
+        <InputRadio
+          type='radio'
+          name='plan'
+          value='completo'
+          checked={plan === 'completo'}
+          onChange={guardarDatos}
+        />
+        Completo
       </Campo>
       <Boton type='button'>Cotizar</Boton>
     </form>
