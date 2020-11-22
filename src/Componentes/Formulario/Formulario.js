@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 
-import { Campo, Label, Select, InputRadio, Boton } from './Formulario.styles';
+import {
+  Campo,
+  Label,
+  Select,
+  InputRadio,
+  Boton,
+  Error,
+} from './Formulario.styles';
 
 const Formulario = () => {
   //Estado del componente
@@ -9,6 +16,8 @@ const Formulario = () => {
     año: '',
     plan: '',
   });
+
+  const [error, setError] = useState(false);
 
   //extraer los valores del state
   const { marca, año, plan } = variablesCotizacion;
@@ -21,8 +30,25 @@ const Formulario = () => {
     });
   };
 
+  //Cotizar seguro cuando el usuario presione el botón Cotizar
+  const cotizarSeguro = (e) => {
+    e.preventDefault();
+
+    if (marca === '' || año === '' || plan === '') {
+      setError(true);
+      return;
+    }
+    setError(false);
+    setVariablesCotizacion({
+      marca,
+      año,
+      plan,
+    });
+  };
+
   return (
-    <form>
+    <form onSubmit={cotizarSeguro}>
+      {error ? <Error> Todos los campos son obligatorios </Error> : null}
       <Campo>
         <Label>Marca</Label>
         <Select name='marca' value={marca} onChange={guardarDatos}>
@@ -67,7 +93,7 @@ const Formulario = () => {
         />
         Completo
       </Campo>
-      <Boton type='button'>Cotizar</Boton>
+      <Boton type='submit'>Cotizar</Boton>
     </form>
   );
 };
