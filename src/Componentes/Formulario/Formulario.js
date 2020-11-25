@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
 import {
+  obtenerDiferenciaDeAño,
+  incrementoMarca,
+  incrementoPlan,
+} from '../../helper';
+
+import {
   Campo,
   Label,
   Select,
@@ -39,11 +45,25 @@ const Formulario = () => {
       return;
     }
     setError(false);
-    setVariablesCotizacion({
-      marca,
-      año,
-      plan,
-    });
+
+    //Costo base para cálculo del seguro será de 2000
+    const costoBase = 2000;
+
+    //Obtener la diferencia de año al año actual
+    const diferencia = obtenerDiferenciaDeAño(año);
+
+    //Por cada año hay que restar el 3% del costo base
+    let cotizacion = costoBase - (diferencia * 3 * costoBase) / 100;
+
+    //Americano 15%
+    //Europeo 30%
+    //Asiático 5%
+    cotizacion *= incrementoMarca(marca);
+
+    //Básico
+    //Completo
+    cotizacion *= incrementoPlan(plan);
+    console.log(parseFloat(cotizacion).toFixed(2));
   };
 
   return (
