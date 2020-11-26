@@ -1,4 +1,7 @@
 import React from 'react';
+
+import PropTypes from 'prop-types';
+
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import { Mensaje, ContenedorCotización, Cotizacion } from './Resultado.styles';
@@ -10,16 +13,22 @@ const Resultado = ({ cotizacion }) => {
     </Mensaje>
   ) : (
     <ContenedorCotización>
-      <TransitionGroup component='p' className='resultado'>
+      <TransitionGroup component='span' className='resultado'>
         <CSSTransition
           classNames='resultado'
           key={cotizacion}
           timeout={{ enter: 500, exit: 500 }}>
-          <Cotizacion>Costo del seguro: $ {cotizacion}</Cotizacion>
+          <Cotizacion>
+            Costo del seguro: $ <span>{cotizacion}</span>
+          </Cotizacion>
         </CSSTransition>
       </TransitionGroup>
     </ContenedorCotización>
   );
+};
+
+Resultado.propTypes = {
+  cotizacion: PropTypes.string.isRequired,
 };
 
 export default Resultado;

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import PropTypes from 'prop-types';
+
 import {
   obtenerDiferenciaDeAño,
   incrementoMarca,
@@ -76,7 +78,7 @@ const Formulario = ({ setResumen, setCargando }) => {
         cotizacion,
         variablesCotizacion,
       });
-    }, 3000);
+    }, 2000);
   };
 
   return (
@@ -129,6 +131,11 @@ const Formulario = ({ setResumen, setCargando }) => {
       <Boton type='submit'>Cotizar</Boton>
     </form>
   );
+};
+
+Formulario.propTypes = {
+  setResumen: PropTypes.func.isRequired,
+  setCargando: PropTypes.func.isRequired,
 };
 
 export default Formulario;

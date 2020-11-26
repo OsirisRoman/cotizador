@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { ContenedorResumen } from './Resumen.styles';
 
 const Resumen = ({ variablesCotizacion }) => {
@@ -17,6 +19,10 @@ const Resumen = ({ variablesCotizacion }) => {
       </ul>
     </ContenedorResumen>
   );
+};
+
+Resumen.propTypes = {
+  variablesCotizacion: PropTypes.object.isRequired,
 };
 
 export default Resumen;
