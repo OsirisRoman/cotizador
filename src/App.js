@@ -6,7 +6,11 @@ import Resumen from './Componentes/Resumen/Resumen';
 import Resultado from './Componentes/Resultado/Resultado';
 import Spinner from './Componentes/Spinner/Spinner';
 
-import { Contenedor, ContenedorFormulario } from './App.styles';
+import {
+  Contenedor,
+  ContenedorFormulario,
+  ContenedorDescripcion,
+} from './App.styles';
 
 function App() {
   //Estado que guardará el resumen de la cotización
@@ -24,6 +28,13 @@ function App() {
   return (
     <Contenedor>
       <Header titulo='Cotizador de Seguros' />
+      <div className='container'>
+        <ContenedorDescripcion>
+          Esta app simula una cotización de seguros de acuerdo a las opciones
+          que el usuario escoja. Hace uso de styled components, react hooks y
+          animaciones 🎉
+        </ContenedorDescripcion>
+      </div>
 
       <ContenedorFormulario>
         <Formulario setResumen={setResumen} setCargando={setCargando} />
