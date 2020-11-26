@@ -6,15 +6,15 @@ export function incrementoMarca(marca) {
   let incremento;
 
   switch (marca) {
-    case 'europeo':
+    case 'Europeo':
       incremento = 1.3;
       break;
 
-    case 'americano':
+    case 'Americano':
       incremento = 1.15;
       break;
 
-    case 'asiatico':
+    case 'Asiático':
       incremento = 1.05;
       break;
 
@@ -25,5 +25,5 @@ export function incrementoMarca(marca) {
 }
 
 export function incrementoPlan(plan) {
-  return plan == 'basico' ? 1.2 : 1.5;
+  return plan === 'Básico' ? 1.2 : 1.5;
 }

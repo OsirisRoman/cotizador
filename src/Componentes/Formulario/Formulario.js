@@ -15,7 +15,7 @@ import {
   Error,
 } from './Formulario.styles';
 
-const Formulario = () => {
+const Formulario = ({ setResumen }) => {
   //Estado del componente
   const [variablesCotizacion, setVariablesCotizacion] = useState({
     marca: '',
@@ -62,8 +62,12 @@ const Formulario = () => {
 
     //Básico
     //Completo
-    cotizacion *= incrementoPlan(plan);
-    console.log(parseFloat(cotizacion).toFixed(2));
+    cotizacion = parseFloat(cotizacion * incrementoPlan(plan)).toFixed(2);
+
+    setResumen({
+      cotizacion,
+      variablesCotizacion,
+    });
   };
 
   return (
@@ -73,9 +77,9 @@ const Formulario = () => {
         <Label>Marca</Label>
         <Select name='marca' value={marca} onChange={guardarDatos}>
           <option value=''>-- Seleccione --</option>
-          <option value='americano'>Americano</option>
-          <option value='europeo'>Europeo</option>
-          <option value='asiatico'>Asiático</option>
+          <option value='Americano'>Americano</option>
+          <option value='Europeo'>Europeo</option>
+          <option value='Asiatico'>Asiático</option>
         </Select>
       </Campo>
       <Campo>
@@ -99,16 +103,16 @@ const Formulario = () => {
         <InputRadio
           type='radio'
           name='plan'
-          value='basico'
-          checked={plan === 'basico'}
+          value='Básico'
+          checked={plan === 'Básico'}
           onChange={guardarDatos}
         />
         Básico
         <InputRadio
           type='radio'
           name='plan'
-          value='completo'
-          checked={plan === 'completo'}
+          value='Completo'
+          checked={plan === 'Completo'}
           onChange={guardarDatos}
         />
         Completo
