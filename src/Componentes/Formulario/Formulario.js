@@ -15,7 +15,7 @@ import {
   Error,
 } from './Formulario.styles';
 
-const Formulario = ({ setResumen }) => {
+const Formulario = ({ setResumen, setCargando }) => {
   //Estado del componente
   const [variablesCotizacion, setVariablesCotizacion] = useState({
     marca: '',
@@ -64,10 +64,19 @@ const Formulario = ({ setResumen }) => {
     //Completo
     cotizacion = parseFloat(cotizacion * incrementoPlan(plan)).toFixed(2);
 
-    setResumen({
-      cotizacion,
-      variablesCotizacion,
-    });
+    //Muestro el spinner de cargando
+    setCargando(true);
+
+    setTimeout(() => {
+      //Quito el spinner de cargando
+      setCargando(false);
+
+      //Paso la información de la cotización al componente Principal
+      setResumen({
+        cotizacion,
+        variablesCotizacion,
+      });
+    }, 3000);
   };
 
   return (

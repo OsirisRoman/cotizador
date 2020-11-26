@@ -4,6 +4,7 @@ import Header from './Componentes/Header/Header';
 import Formulario from './Componentes/Formulario/Formulario';
 import Resumen from './Componentes/Resumen/Resumen';
 import Resultado from './Componentes/Resultado/Resultado';
+import Spinner from './Componentes/Spinner/Spinner';
 
 import { Contenedor, ContenedorFormulario } from './App.styles';
 
@@ -18,14 +19,17 @@ function App() {
     },
   });
 
+  const [cargando, setCargando] = useState(false);
+
   return (
     <Contenedor>
       <Header titulo='Cotizador de Seguros' />
 
       <ContenedorFormulario>
-        <Formulario setResumen={setResumen} />
+        <Formulario setResumen={setResumen} setCargando={setCargando} />
         <Resumen variablesCotizacion={resumen.variablesCotizacion} />
-        <Resultado cotizacion={resumen.cotizacion} />
+        {cargando ? <Spinner /> : null}
+        {!cargando ? <Resultado cotizacion={resumen.cotizacion} /> : null}
       </ContenedorFormulario>
     </Contenedor>
   );
