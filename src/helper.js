@@ -14,7 +14,7 @@ export function incrementoMarca(marca) {
       incremento = 1.15;
       break;
 
-    case 'Asiático':
+    case 'Asiatico':
       incremento = 1.05;
       break;
 

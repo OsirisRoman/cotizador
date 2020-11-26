@@ -1,4 +1,5 @@
 import React from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import { Mensaje, ContenedorCotización, Cotizacion } from './Resultado.styles';
 
@@ -9,7 +10,14 @@ const Resultado = ({ cotizacion }) => {
     </Mensaje>
   ) : (
     <ContenedorCotización>
-      <Cotizacion>Costo del seguro: $ {cotizacion}</Cotizacion>
+      <TransitionGroup component='p' className='resultado'>
+        <CSSTransition
+          classNames='resultado'
+          key={cotizacion}
+          timeout={{ enter: 500, exit: 500 }}>
+          <Cotizacion>Costo del seguro: $ {cotizacion}</Cotizacion>
+        </CSSTransition>
+      </TransitionGroup>
     </ContenedorCotización>
   );
 };
