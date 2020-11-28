@@ -1,4 +1,4 @@
-# Administrador Básico de Citas
+# Cotizador de seguros
 
 _Un simulador de cotizador de seguros que calcula los costos de un seguro de acuerdo a varias opciones que el usuario elige. El cotizador tiene validación de los campos además de hacer uso de algunos hooks y librerías de animaciones_
 
